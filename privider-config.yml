@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 7002
+#Spring配置
+spring:
+  application:
+    name: springcloud-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud02?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: rootroot
+  profiles: dev
+#mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.nuri.springcloudapi.pojo
+
+#Eureka配置-服务注册地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/,http://eureka8002.com:8002/eureka/,http://eureka8003.com:8003/eureka/
+  instance:
+    instance-id: springcloud-provider-7002
+debug: false
+---
+server:
+  port: 7002
+#Spring配置
+spring:
+  application:
+    name: springcloud-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud02?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: rootroot
+  profiles: test
+#mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.nuri.springcloudapi.pojo
+
+#Eureka配置-服务注册地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/,http://eureka8002.com:8002/eureka/,http://eureka8003.com:8003/eureka/
+  instance:
+    instance-id: springcloud-provider-7002
+debug: false
